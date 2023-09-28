@@ -1,0 +1,3 @@
+issue 1: in routes use exact ={true}, by this only the route which matches gets displayed , otherwise all the other routes with similarity will also get rendered
+ex = <Route path='/'> <component 1/> </Route> and <Route path='/login'> <component 2/> </Route>
+both component gets displayed on the screen, so use exact keyword in Route and use Switch inside the Router component
