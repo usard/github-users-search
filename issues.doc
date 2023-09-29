@@ -1,3 +1,22 @@
 issue 1: in routes use exact ={true}, by this only the route which matches gets displayed , otherwise all the other routes with similarity will also get rendered
 ex = <Route path='/'> <component 1/> </Route> and <Route path='/login'> <component 2/> </Route>
 both component gets displayed on the screen, so use exact keyword in Route and use Switch inside the Router component
+------------------------------------------------------------------------------------------------------------------------
+how to convert object having objects inside to array of objects 
+
+const obj = {
+    a: {
+        x:1
+    },
+    b: {
+        y: 2
+    }
+}
+
+const arr = object.values(obj);
+
+arr = [ {x:1}, {y:2} ]
+
+---------------------------------------------------------------------------------------------------
+fusioncharts.js:13 [Violation] Added non-passive event listener to a scroll-blocking 'touchstart' event. Consider marking event handler 
+as 'passive' to make the page more responsive. See https://www.chromestatus.com/feature/5745543795965952
