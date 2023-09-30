@@ -25,9 +25,33 @@ const Repos = () => {
   const chartData = Object.values(languages); // convert object of objects into array of objects
 
   console.log(chartData);
+
+  // for doughnut
+  const starred = userRepos.reduce((total, item) => {
+    const { language } = item;
+    if (!language) return total;
+    if (total[language] === undefined) {
+      total[language] = {
+        label: language,
+        value: item.stargazers_count,
+      };
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + item.stargazers_count,
+      };
+    }
+    return total;
+  }, {});
+  const mostPopularLanguages = Object.values(starred);
+  console.log(mostPopularLanguages);
+
   return (
     <Wrapper className="section-center">
-      <Pie3D chartData={chartData}></Pie3D>;
+      <Pie3D chartData={chartData}></Pie3D>
+      <div></div>
+      <Doughnut2D chartData={mostPopularLanguages}></Doughnut2D>
+      <div></div>
     </Wrapper>
   );
 };

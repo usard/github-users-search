@@ -1,7 +1,40 @@
-import React from 'react';
+import React from "react";
+import FusionCharts from "fusioncharts";
+import ReactFC from "react-fusioncharts";
+import Charts from "fusioncharts/fusioncharts.charts";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
-const Doughnut2d = () => {
-  return <div>chart</div>;
+import { useGithubContext } from "../../context/context";
+import { Doughnut2D } from ".";
+ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
+const Doughnut2d = ({ chartData }) => {
+  // const chartConfigs = {
+  //   type: "doughnut2d",
+  //   dataFormat: "json",
+  //   dataSource: {
+  //     chart: {
+  //       caption: "most starred languages",
+  //       decimals: "2",
+  //       theme: "fusion",
+  //     },
+  //     data: mostPopularLanguages,
+  //   },
+  // };
+
+  const chartConfigs = {
+    type: "doughnut2d", // The chart type
+    dataFormat: "json", // Data type
+    dataSource: {
+      chart: {
+        caption: "most starred languages",
+        decimals: "2",
+        theme: "fusion", //Set the theme for your chart
+      },
+      data: chartData,
+    },
+  };
+
+  return <ReactFC {...chartConfigs} />;
 };
 
 export default Doughnut2d;
