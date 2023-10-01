@@ -46,10 +46,27 @@ const Repos = () => {
   const mostPopularLanguages = Object.values(starred);
   console.log(mostPopularLanguages);
 
+  const column3dData = userRepos
+    .reduce((accArr, item) => {
+      const { name, stargazers_count } = item;
+      let total = {};
+      if (!name || !stargazers_count) return accArr;
+      else {
+        total = {
+          label: name,
+          value: stargazers_count,
+        };
+        accArr.push(total);
+      }
+      return accArr;
+    }, [])
+    .filter((item) => item.value > 20);
+  console.log("column 3d data :", column3dData);
+
   return (
     <Wrapper className="section-center">
       <Pie3D chartData={chartData}></Pie3D>
-      <div></div>
+      <Column3D chartData={column3dData}></Column3D>
       <Doughnut2D chartData={mostPopularLanguages}></Doughnut2D>
       <div></div>
     </Wrapper>
