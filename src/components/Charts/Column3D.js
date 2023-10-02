@@ -9,11 +9,14 @@ ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 const Column3D = ({ chartData }) => {
   const chartConfigs = {
     type: "column3d",
+    height: "400",
+    width: "100%",
     dataFormat: "json",
     dataSource: {
       chart: {
         caption: "Most popular",
         // subCaption: "",
+        height: "400",
         xAxisName: "Repository",
         yAxisName: "stars",
         theme: "fusion",
@@ -21,7 +24,7 @@ const Column3D = ({ chartData }) => {
       data: chartData,
     },
   };
-  return <ReacFC {...chartConfigs} />;
+  return <ReactFC {...chartConfigs} />;
 };
 
 export default Column3D;
