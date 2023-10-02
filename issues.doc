@@ -20,3 +20,7 @@ arr = [ {x:1}, {y:2} ]
 ---------------------------------------------------------------------------------------------------
 fusioncharts.js:13 [Violation] Added non-passive event listener to a scroll-blocking 'touchstart' event. Consider marking event handler 
 as 'passive' to make the page more responsive. See https://www.chromestatus.com/feature/5745543795965952
+
+------------------------------------------------------------------------------------------------------------------
+when you click on input field then the field will be highlighted with a border outline,
+to remove that u can use the property  'outline-color'
