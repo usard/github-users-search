@@ -24,3 +24,10 @@ as 'passive' to make the page more responsive. See https://www.chromestatus.com/
 ------------------------------------------------------------------------------------------------------------------
 when you click on input field then the field will be highlighted with a border outline,
 to remove that u can use the property  'outline-color'
+
+------------------------------------------------------------------------------------------------------
+why the remainaing requests number is not updating when i search for users in search bar 
+----------------------------------------------------------------------------------------
+even after clicking login button on login page and entering credentials , i am redirected to the same lgoin page instead of the dashboard screen,
+reason: autho will take some time to update the state of the user autentication meanwhile our app loads and redirects again to the same login page .
+so what we need to do is to wrap our app.js with authwrapper which will render the app component once the auth0 loads the user authenticated data ,if user is authneticated it will redirect to the dashboard screen.
