@@ -1,9 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from "react";
+import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useGithubContext } from "../context/context";
 
 const Navbar = () => {
-  return <h2>navbar component</h2>;
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+  const { name } = user;
+  return (
+    <Wrapper>
+      {!isAuthenticated && (
+        <div>
+          <button type="button" onClick={loginWithRedirect}>
+            login
+          </button>
+        </div>
+      )}
+      {isAuthenticated && (
+        <div>
+          <h3>
+            Hi <span> {name}</span>
+          </h3>
+          <button className="btn" onClick={logout}>
+            logout
+          </button>
+        </div>
+      )}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.nav`

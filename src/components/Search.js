@@ -1,10 +1,60 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
-import { GithubContext } from '../context/context';
+import React, { useState } from "react";
+import styled from "styled-components";
+// import { MdSearch } from "react-icons/md";
+import axios from "axios";
+import { useGithubContext } from "../context/context";
+import { CiSearch } from "react-icons/ci";
 const Search = () => {
-  return <h2>search component</h2>;
+  const { requests, fetchUserDetails, searchText, setSearchText } =
+    useGithubContext();
+  return (
+    <section>
+      <Wrapper className="section-center">
+        <form onSubmit={fetchUserDetails}>
+          <div className="form-control">
+            <CiSearch
+              style={{
+                background: "white",
+                fontSize: "1.5rem",
+                height: "2rem",
+                padding: "4px",
+              }}
+            ></CiSearch>
+            <input
+              // disabled="true"
+              placeholder="enter here"
+              type="text"
+              value={searchText}
+              onChange={(event) => setSearchText(event.target.value)}
+            />
+            <button type="submit">search</button>
+          </div>
+        </form>
+        <div className="requests">
+          <h3>Requests: {requests}/60</h3>
+        </div>
+      </Wrapper>
+      {/* <ErrorWrapper>
+        
+      </ErrorWrapper> */}
+    </section>
+  );
 };
+
+// const Wrapper = styled.div`
+//   border-radius: 50%;
+//   form {
+//     display: flex;
+//     input {
+//       padding: 5px;
+//       font-size: 1rem;
+//       border-color: transparent;
+//       border: none;
+//       height: 2rem;
+//       width: 50%;
+//     }
+//   }
+// `;
 
 const Wrapper = styled.div`
   position: relative;

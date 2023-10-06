@@ -5,21 +5,23 @@ import styled from "styled-components";
 const Followers = () => {
   const { userFollowers } = useGithubContext();
   return (
-    <Wrapper className="followers">
-      {userFollowers.map((follower) => {
-        const { avatar_url, login, html_url } = follower;
-        return (
-          <article>
-            <img src={avatar_url} alt="" />
-            <div>
-              <h5>{login}</h5>
-              <a href={html_url}>
-                <p>{html_url}</p>
-              </a>
-            </div>
-          </article>
-        );
-      })}
+    <Wrapper>
+      <div className="followers">
+        {userFollowers.map((follower) => {
+          const { id, avatar_url, login, html_url } = follower;
+          return (
+            <article key={id}>
+              <img src={avatar_url} alt="" />
+              <div>
+                <h5>{login}</h5>
+                <a href={html_url}>
+                  <p>{html_url}</p>
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </Wrapper>
   );
 };
@@ -30,6 +32,7 @@ const Wrapper = styled.article`
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   position: relative;
+  // overflow: auto;
 
   &::before {
     content: " followers";
@@ -47,7 +50,7 @@ const Wrapper = styled.article`
     font-size: 1rem;
   }
   .followers {
-    overflow: scroll;
+    overflow: auto;
     height: 260px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));

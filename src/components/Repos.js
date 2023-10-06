@@ -63,12 +63,23 @@ const Repos = () => {
     .filter((item) => item.value > 20);
   console.log("column 3d data :", column3dData);
 
+  const ForksData = userRepos
+    .reduce((accArr, item) => {
+      const { name, forks } = item;
+      if (!forks) return accArr;
+      if (forks) {
+        accArr.push({ label: name, value: forks });
+      }
+      return accArr;
+    }, [])
+    .filter((item) => item.value > 50);
+
   return (
     <Wrapper className="section-center">
       <Pie3D chartData={chartData}></Pie3D>
       <Column3D chartData={column3dData}></Column3D>
       <Doughnut2D chartData={mostPopularLanguages}></Doughnut2D>
-      <div></div>
+      <Bar3D chartData={ForksData}></Bar3D>
     </Wrapper>
   );
 };
@@ -85,16 +96,16 @@ const Wrapper = styled.div`
     grid-template-columns: 2fr 3fr;
   }
 
-  // div {
-  //   width: 100% !important;
-  // }
-  // .fusioncharts-container {
-  //   width: 100% !important;
-  // }
-  // svg {
-  //   width: 100% !important;
-  //   border-radius: var(--radius) !important;
-  // }
+  div {
+    width: 100% !important;
+  }
+  .fusioncharts-container {
+    width: 100% !important;
+  }
+  svg {
+    width: 100% !important;
+    border-radius: var(--radius) !important;
+  }
 `;
 
 export default Repos;
